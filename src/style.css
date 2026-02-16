@@ -1118,3 +1118,28 @@ button:active {
   }
 
 }
+
+/* ===== Liens longs : rendu propre sur mobile ===== */
+@media (max-width: 600px) {
+
+  /* Liens : autoriser la coupure propre des URL */
+  a {
+    overflow-wrap: anywhere;
+    /* coupe où il faut si URL longue */
+    word-break: break-word;
+    /* fallback */
+  }
+
+  /* Si tu as des encadrés type .formula */
+  .formula a {
+    font-size: 0.95em;
+    /* un poil plus petit dans les encadrés */
+    line-height: 1.25;
+    text-decoration-thickness: 2px;
+  }
+
+  /* Optionnel : un peu moins de gros espaces dans les encadrés */
+  .formula {
+    padding: 14px 12px;
+  }
+}
