@@ -1,0 +1,1098 @@
+/* =========================================================
+   UI CARTE MÉMO — BASE STABLE (cards + actions + encadrés)
+   ========================================================= */
+
+/* TITRES */
+h1 {
+  text-align: center;
+  margin: 0.2em 0 0.8em;
+  letter-spacing: -0.02em;
+}
+
+/* CONTENEUR */
+#app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center; /* On garde ton choix : lecture centrée */
+}
+
+/* CARTES */
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 2em;
+  margin: 1.2em 0;
+  text-align: center; /* texte des leçons centré */
+}
+
+/* MODE CLAIR */
+@media (prefers-color-scheme: light) {
+  .card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+  }
+}
+
+/* TITRES DANS LES CARTES */
+.card h2,
+.card h3 {
+  text-align: center;
+}
+
+.card h3 {
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  font-size: 1.15rem;
+  font-weight: 900;
+  padding-left: 10px;
+  border-left: 5px solid #4f46e5;
+  display: inline-block;
+}
+
+/* LISTES (par défaut : lisibles même si le texte est centré) */
+.card ul,
+.card ol {
+  text-align: left;
+  display: inline-block;
+  margin: 0.8em auto 1em;
+  padding-left: 1.4em;
+}
+
+/* LIEN CLIQUABLE SUR TITRE */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ===============================
+   ACCUEIL – MODULES HORIZONTAUX
+   =============================== */
+.home-tabs {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.home-tabs .card {
+  flex: 1 1 280px;
+  min-width: 260px;
+}
+
+@media (max-width: 768px) {
+  .home-tabs {
+    flex-direction: column;
+  }
+}
+
+/* ===============================
+   ACTIONS (BOUTONS) — VISIBLES
+   =============================== */
+button {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.65em 1.1em;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+  border-color: rgba(79, 70, 229, 0.9);
+  background: rgba(79, 70, 229, 0.14);
+  transform: translateY(-1px);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.55);
+  outline-offset: 3px;
+}
+
+@media (prefers-color-scheme: light) {
+  button {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    background: rgba(0, 0, 0, 0.03);
+  }
+  button:hover {
+    border-color: rgba(79, 70, 229, 0.85);
+    background: rgba(79, 70, 229, 0.10);
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.35);
+  }
+}
+
+/* LIENS "RETOUR" PLUS VISIBLES */
+a {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ===============================
+   BADGES / ÉTIQUETTES
+   =============================== */
+.badge {
+  display: inline-block;
+  padding: 0.18em 0.55em;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  margin: 0 6px 6px 0;
+}
+
+.badge-idcc {
+  border-color: rgba(79, 70, 229, 0.65);
+  background: rgba(79, 70, 229, 0.16);
+}
+.badge-key {
+  border-color: rgba(16, 185, 129, 0.60);
+  background: rgba(16, 185, 129, 0.16);
+}
+.badge-warn {
+  border-color: rgba(245, 158, 11, 0.70);
+  background: rgba(245, 158, 11, 0.18);
+}
+
+@media (prefers-color-scheme: light) {
+  .badge {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* =========================================================
+   BOÎTES PÉDAGOGIQUES (ultra visuel) — version UNIQUE
+   ========================================================= */
+.box {
+  margin: 18px auto;
+  padding: 18px 20px;
+  border-radius: 16px;
+  max-width: 900px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.box-title {
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* FORMULE / MÉTHODE */
+.box-formula {
+  background: #eef2ff;
+  border-left: 8px solid #4f46e5;
+}
+
+/* EXEMPLE */
+.box-example {
+  background: #ecfdf5;
+  border-left: 8px solid #10b981;
+}
+
+/* RAPPEL / EXAMEN */
+.box-reminder {
+  background: #fefce8;
+  border-left: 8px solid #eab308;
+}
+
+/* ATTENTION */
+.box-warn {
+  background: #fff7ed;
+  border-left: 8px solid #f97316;
+}
+
+/* Texte */
+.box p,
+.box li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.box ul,
+.box ol {
+  list-style: disc;
+  padding-left: 1.4em;
+  text-align: left;
+  display: inline-block;
+  margin: 0;
+}
+
+/* =========================================================
+   VARIANTES VISUELLES SUR TES BLOCS .formula
+   ========================================================= */
+.formula.formula-example {
+  border-color: #10b981;
+  background-color: #ecfdf5;
+}
+
+.formula.formula-reminder {
+  border-color: #eab308;
+  background-color: #fefce8;
+}
+
+.formula.formula-warn {
+  border-color: #f97316;
+  background-color: #fff7ed;
+}
+
+.formula.formula-formula {
+  border-color: #4f46e5;
+  background-color: #eef2ff;
+}
+
+/* =========================================================
+   MENUS DE SOUS-MODULES — STYLE "VRP"
+   ========================================================= */
+.card-menu {
+  list-style: none;
+  padding: 0;
+  margin: 18px auto 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 980px;
+}
+
+.card-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.card-menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.65);
+  text-decoration: none;
+  color: inherit;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  min-width: 240px;
+  cursor: pointer;
+  transition: transform 0.08s ease, border-color 0.16s ease, background 0.16s ease;
+}
+
+.card-menu a:hover {
+  transform: translateY(-1px);
+  border-color: rgba(79,70,229,0.55);
+  background: rgba(79,70,229,0.08);
+}
+
+.card-menu a:focus,
+.card-menu a:focus-visible {
+  outline: 3px solid rgba(79,70,229,0.35);
+  outline-offset: 3px;
+}
+
+/* MODE SOMBRE : rendu propre */
+@media (prefers-color-scheme: dark) {
+  .card-menu a {
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.06);
+  }
+  .card-menu a:hover {
+    border-color: rgba(79,70,229,0.85);
+    background: rgba(79,70,229,0.14);
+  }
+}
+
+.hidden { display: none; }
+
+/* =========================================================
+   CHECKLIST BTP — hiérarchie + lisibilité
+   ========================================================= */
+.checklist {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.check-item {
+  margin: 14px 0;
+}
+
+.check-label {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 900;
+}
+
+.check-details {
+  margin: 10px 0 0 28px;
+}
+
+.check-link {
+  margin-top: 8px;
+}
+
+.check-followups {
+  margin: 14px 0 14px 28px;
+  padding-left: 14px;
+  border-left: 4px solid rgba(140, 140, 140, 0.35);
+}
+
+.check-followups .check-item {
+  margin-top: 10px;
+}
+
+/* Listes "pédagogiques" (avec emoji) : pas de puces */
+.card ul.list-clean,
+.card ol.list-clean {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.8em auto 1em;
+  text-align: left;
+  display: inline-block;
+}
+
+.card ul.list-clean li,
+.card ol.list-clean li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* LISTE CENTRÉE — LIENS / RÉFÉRENCES (sans puces) */
+.card ul.centered-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0.8em auto 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  text-align: center;
+}
+
+.card ul.centered-list li {
+  margin: 0;
+}
+
+/* ============================= */
+/* LEÇONS BTP — CENTRAGE STANDARD */
+/* ============================= */
+.btp-lesson {
+  text-align: center;
+}
+
+.btp-lesson p {
+  text-align: center;
+}
+
+.btp-lesson h3 {
+  text-align: center;
+}
+
+/* ✅ Listes pédagogiques dédiées dans une leçon BTP */
+.btp-lesson ul.bullets,
+.btp-lesson ol.bullets {
+  text-align: left;
+  display: inline-block;
+  margin: 0.8em auto 1em;
+  padding-left: 1.4em;
+  list-style: disc;
+}
+
+/* Encadrés : on ne touche pas */
+.btp-lesson .formula {
+  margin: 12px auto;
+}
+/* =========================================================
+   ✅ RÉCAP CHECKLIST — STYLE PRO (fiche synthèse)
+   ========================================================= */
+
+.recap-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 14px 40px;
+}
+
+.recap-header {
+  max-width: 980px;
+  margin: 0 auto 12px;
+  text-align: center;
+}
+
+.recap-header h2 {
+  margin: 10px 0 6px;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.recap-subtitle {
+  opacity: 0.8;
+  margin: 0;
+}
+
+.recap-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 12px 0 4px;
+}
+
+.recap-actions a.btn,
+.recap-actions button.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  font-weight: 650;
+}
+
+.recap-sheet {
+  max-width: 980px;
+  margin: 14px auto;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.recap-h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.recap-list {
+  margin: 0;
+  padding-left: 18px;
+  text-align: left;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.recap-list li {
+  margin: 6px 0;
+}
+
+.recap-fieldset {
+  margin: 12px 0 0;
+  padding: 14px 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.recap-legend {
+  padding: 0 10px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+}
+
+.recap-table-wrap {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.recap-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.recap-table th,
+.recap-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 10px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.recap-table th {
+  font-weight: 800;
+  opacity: 0.9;
+}
+
+.recap-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.recap-muted {
+  opacity: 0.75;
+}
+
+/* Impression PDF propre */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .recap-actions,
+  .nav-actions,
+  button,
+  a.btn {
+    display: none !important;
+  }
+
+  .recap-sheet {
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+  }
+
+  .recap-fieldset {
+    border: 1px solid #ddd !important;
+  }
+
+  .recap-table th,
+  .recap-table td {
+    border-bottom: 1px solid #ddd !important;
+  }
+}
+
+/* ==============================
+   ✅ RÉCAP — FICHE PRO
+   ============================== */
+
+.recap-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 14px 40px;
+}
+
+.recap-header {
+  max-width: 980px;
+  margin: 0 auto 12px;
+  text-align: center;
+}
+
+.recap-header h2 {
+  margin: 10px 0 6px;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.recap-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 12px 0 4px;
+}
+
+.recap-actions a.btn,
+.recap-actions button.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  font-weight: 650;
+}
+
+.recap-sheet {
+  max-width: 980px;
+  margin: 14px auto;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.recap-h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.recap-list {
+  margin: 0;
+  padding-left: 18px;
+  text-align: left;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.recap-list li {
+  margin: 6px 0;
+}
+
+.recap-table-wrap {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.recap-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 740px;
+}
+
+.recap-table th,
+.recap-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 10px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.recap-table th {
+  font-weight: 800;
+  opacity: 0.9;
+}
+
+.recap-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.recap-muted {
+  opacity: 0.75;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .recap-actions,
+  .nav-actions,
+  button,
+  a.btn {
+    display: none !important;
+  }
+
+  .recap-sheet {
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+  }
+
+  .recap-table th,
+  .recap-table td {
+    border-bottom: 1px solid #ddd !important;
+  }
+}
+
+/* =========================================================
+   COULEURS BRANCHES URSSAF
+   ========================================================= */
+
+.branch-maladie {
+  color: #2563eb;
+  /* bleu */
+  font-weight: 800;
+}
+
+.branch-vieillesse {
+  color: #16a34a;
+  /* vert */
+  font-weight: 800;
+}
+
+.branch-famille {
+  color: #d97706;
+  /* orange */
+  font-weight: 800;
+}
+
+.branch-atmp {
+  color: #dc2626;
+  /* rouge */
+  font-weight: 800;
+}
+
+/* Boutons colorés */
+
+.card-menu a.branch-maladie:hover {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.card-menu a.branch-vieillesse:hover {
+  background: rgba(22, 163, 74, 0.12);
+}
+
+.card-menu a.branch-famille:hover {
+  background: rgba(217, 119, 6, 0.12);
+}
+
+.card-menu a.branch-atmp:hover {
+  background: rgba(220, 38, 38, 0.12);
+}
+
+.urssaf-others {
+  max-width: 980px;
+  margin: 30px auto 0;
+  /* centre horizontalement */
+  text-align: center;
+}
+
+.urssaf-others .card-menu {
+  justify-content: center;
+}
+
+/* =========================================================
+   URSSAF — enlever la barre violette des h3 (sinon effet "décalé")
+   ========================================================= */
+
+.urssaf-branches h3,
+.urssaf-others h3 {
+  border-left: none !important;
+  padding-left: 0 !important;
+  display: block !important;
+  /* prend toute la largeur */
+}
+
+.vm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+}
+
+.vm-table th,
+.vm-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.vm-table th {
+  font-weight: 800;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+/* ================================
+   VERSEMENT MOBILITÉ — TABLEAU (resserré)
+   ================================ */
+
+.vm-table {
+  width: min(720px, 85%);
+  /* ✅ resserré + limite max */
+  margin: 10px auto 0;
+  /* ✅ centré */
+  border-collapse: collapse;
+  table-layout: fixed;
+  /* ✅ empêche l'étirement bizarre */
+}
+
+.vm-table th,
+.vm-table td {
+  padding: 8px 10px;
+  /* ✅ un peu plus serré */
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.vm-table th {
+  font-weight: 800;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+/* ✅ colonnes équilibrées et rapprochées */
+.vm-table th:first-child,
+.vm-table td:first-child {
+  width: 52%;
+}
+
+.vm-table th:last-child,
+.vm-table td:last-child {
+  width: 48%;
+}
+
+/* =========================================================
+   🎨 THEME COULEURS (AJOUT) — sans modifier le texte/HTML
+   👉 Colle ce bloc TOUT EN BAS de style.css
+   ========================================================= */
+
+/* Fond général moins blanc */
+html,
+body {
+  background: linear-gradient(180deg, #f6f2ff 0%, #ffffff 45%, #f3fbff 100%);
+}
+
+/* Zone app : un peu de profondeur */
+#app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 14px;
+}
+
+/* Titres plus “vivants” */
+h1,
+h2,
+h3 {
+  color: #2b1b5a;
+}
+
+h3 {
+  position: relative;
+  padding-left: 10px;
+}
+
+h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 18px;
+  background: linear-gradient(180deg, #6d28d9 0%, #2563eb 100%);
+  border-radius: 6px;
+  opacity: 0.9;
+}
+
+/* Cartes : fond léger + ombre douce */
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(109, 40, 217, 0.10);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+/* Petits blocs/sections “blanches” : ajouter une bordure colorée */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(109, 40, 217, 0.0), rgba(109, 40, 217, 0.35), rgba(37, 99, 235, 0.0));
+  margin: 16px auto;
+  max-width: 720px;
+}
+
+/* Liens : plus visibles */
+a {
+  color: #4f46e5;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #2563eb;
+}
+
+/* Boutons (tes “fiches” cliquables) : plus de couleur */
+button {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f3ff 100%);
+  border: 1px solid rgba(109, 40, 217, 0.18);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.10);
+  color: #2b1b5a;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(37, 99, 235, 0.14);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+button:active {
+  transform: translateY(0px);
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.10);
+}
+
+/* ✅ TABLEAU COTISATIONS : on sort du conteneur #app (max-width:1100) */
+.landscape-page {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -49vw;
+  margin-right: -49vw;
+  width: 98vw;
+  max-width: 1700px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Scroll si besoin */
+.landscape-page .recap-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tableau compact et lisible */
+.landscape-page .recap-table-compact {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 1400px;
+  border-collapse: collapse;
+}
+
+.landscape-page .recap-table-compact th,
+.landscape-page .recap-table-compact td {
+  font-size: 0.82rem;
+  padding: 6px 8px;
+  line-height: 1.15;
+  vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+/* Optionnel : texte un peu plus petit pour mieux tenir */
+.landscape-page .recap-table th,
+.landscape-page .recap-table td {
+  font-size: 0.92rem;
+}
+
+/* =========================================
+   ✅ TABLEAU "PAYSAGE PLEINE PAGE" SANS DÉMARCATION
+   (full-bleed propre, sans bande/coupure)
+   ========================================= */
+
+/* On neutralise l'effet "carte" uniquement pour ce bloc */
+.landscape-fullbleed {
+  /* Full width écran */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* On met EXACTEMENT le même fond que la page pour supprimer la démarcation */
+  background: linear-gradient(180deg, #f6f2ff 0%, #ffffff 45%, #f3fbff 100%);
+  padding: 18px 0 22px;
+
+  /* On évite tout effet de “trait” */
+  box-shadow: none;
+  border: none;
+}
+
+/* Le wrapper du tableau (au centre) */
+.landscape-fullbleed .recap-table-wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tableau large (lisible) */
+.landscape-fullbleed .recap-table {
+  min-width: 1400px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Un peu plus compact si besoin */
+.landscape-fullbleed .recap-table th,
+.landscape-fullbleed .recap-table td {
+  font-size: 0.92rem;
+  padding: 8px 10px;
+  vertical-align: top;
+}
+
+/* Important : la carte ne doit pas "couper" le full-bleed */
+.card {
+  overflow: visible;
+}
+
+/* =========================================
+   ✅ TABLEAU COTISATIONS : mettre la colonne "Cotisations" en rouge
+   (5e colonne du tableau)
+   ========================================= */
+
+.cotisations-red td:nth-child(5) {
+  color: #dc2626;
+  /* rouge lisible */
+  font-weight: 800;
+}
+
+/* Option : garder le rouge même si du <b> est dedans */
+.cotisations-red td:nth-child(5) b {
+  color: inherit;
+}
+
+/* Option : pas rouge sur l'entête (si tu veux garder ton jaune) */
+.cotisations-red th:nth-child(5) {
+  color: #000;
+}
+
+/* ✅ Tableaux carte Effectif uniquement */
+.effectif-table-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* centre le tableau dans la page */
+  margin: 10px 0;
+}
+
+.effectif-table {
+  width: min(780px, 100%);
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+  /* ⭐ espace entre les lignes (lisible) */
+}
+
+/* padding léger = lisible sans “gros cadre” */
+.effectif-table th,
+.effectif-table td {
+  padding: 2px 10px;
+}
+
+/* Alignements */
+.effectif-table .col-left {
+  text-align: left;
+}
+
+.effectif-table .col-center {
+  text-align: center;
+}
+
+.effectif-table .col-right {
+  text-align: right;
+}
+
+/* Largeurs fixes */
+.effectif-table.effectif-2col .col-left {
+  width: 70%;
+}
+
+.effectif-table.effectif-2col .col-right {
+  width: 30%;
+}
+
+/* Retrait lignes */
+.effectif-table .indent {
+  padding-left: 18px;
+}
+
+/* Fix : en-tête gauche parfaitement aligné */
+.effectif-table thead th.col-left {
+  padding-left: 10px;
+  text-align: left;
+}
