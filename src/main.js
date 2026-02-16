@@ -1513,6 +1513,11 @@ function render() {
   setView(`
     <h1>Cartes Mémo</h1>
 
+      <div class="home-search-top">
+    <a href="#/search" class="home-search-btn">🔎 Recherche</a>
+  </div>
+
+
     <div class="home-tabs">
       <div class="card">
         <h2>
@@ -1585,15 +1590,6 @@ function render() {
           </a>
         </h2>
       </div>
-
-      <div class="card">
-        <h2>
-          <a href="#/search" class="card-link">
-            🔎 Recherche
-          </a>
-        </h2>
-      </div>
-    </div>
   `);
 }
 

@@ -1096,3 +1096,25 @@ button:active {
   padding-left: 10px;
   text-align: left;
 }
+
+/* ===== Mobile optimisation cartes accueil ===== */
+@media (max-width: 768px) {
+
+  .home-card {
+    padding: 20px 16px;
+    min-height: auto;
+  }
+
+  .home-card h2 {
+    font-size: 22px;
+  }
+
+  .home-card p {
+    font-size: 14px;
+  }
+
+  .home-tabs {
+    gap: 12px;
+  }
+
+}
