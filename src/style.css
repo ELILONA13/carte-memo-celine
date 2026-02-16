@@ -1143,3 +1143,19 @@ button:active {
     padding: 14px 12px;
   }
 }
+
+/* ===== Boutons centrés en mobile ===== */
+@media (max-width: 600px) {
+
+  .card-button,
+  .branch-button,
+  .module-button,
+  .card-menu li a {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto;
+    box-sizing: border-box;
+  }
+
+}
