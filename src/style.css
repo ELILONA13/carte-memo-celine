@@ -137,6 +137,17 @@ a {
   text-underline-offset: 3px;
 }
 
+/* ===== Centrage propre des boutons branches ===== */
+
+.branch-button,
+.card-button,
+.module-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 /* ===============================
    BADGES / ÉTIQUETTES
    =============================== */
@@ -1158,4 +1169,19 @@ button:active {
     box-sizing: border-box;
   }
 
+}
+
+/* ===== Menus : boutons uniformes et bien centrés (tous modules) ===== */
+.card-menu {
+  flex-direction: column;
+  /* 1 bouton par ligne */
+  align-items: center;
+  max-width: 720px;
+}
+
+.card-menu a {
+  width: min(560px, 100%);
+  /* même largeur sur PC, s’adapte sur mobile */
+  min-width: 0;
+  /* annule le min-width:240px précédent */
 }
