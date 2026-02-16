@@ -1197,10 +1197,4 @@ button:active {
 .card-menu a {
   width: min(560px, 100%);
   min-width: 0;
-  height: 48px;
-  /* 🔹 hauteur identique */
-  display: flex;
-  /* 🔹 centrage vertical parfait */
-  align-items: center;
-  justify-content: center;
 }
