@@ -1206,3 +1206,11 @@ button:active {
   display: block !important;
   text-align: center;
 }
+
+/* ===== URSSAF : enlever le trait décoratif des titres ===== */
+.urssaf-branches h2::before,
+.urssaf-branches h3::before,
+.urssaf-others h2::before,
+.urssaf-others h3::before {
+  content: none !important;
+}
