@@ -1198,3 +1198,11 @@ button:active {
   width: min(560px, 100%);
   min-width: 0;
 }
+
+/* ===== URSSAF : titres parfaitement centrés ===== */
+.urssaf-branches h3 {
+  padding-left: 0 !important;
+  border-left: none !important;
+  display: block !important;
+  text-align: center;
+}
