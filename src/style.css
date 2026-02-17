@@ -1259,25 +1259,23 @@ button:active {
 }
 
 /* =========================================
-   ✅ ACCUEIL MOBILE — style "touches ovales"
+   ✅ ACCUEIL MOBILE — hauteur adaptative
    ========================================= */
 @media (max-width: 600px) {
 
   .home-tabs .card {
-    border-radius: 999px !important;
-    /* forme ovale */
-    padding: 18px 24px !important;
-    /* hauteur adaptée */
-    margin: 10px auto !important;
-    min-height: unset !important;
+    min-height: 0 !important;
+    /* supprime hauteur forcée */
     height: auto !important;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    /* s’adapte au contenu */
+    padding: 22px 16px !important;
+    margin: 12px 0 !important;
   }
 
   .home-tabs .card h2 {
     margin: 0 !important;
-    font-size: 20px !important;
-    line-height: 1.2 !important;
+    font-size: 22px !important;
+    line-height: 1.15 !important;
   }
 
 }
