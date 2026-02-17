@@ -1214,3 +1214,18 @@ button:active {
 .urssaf-others h3::before {
   content: none !important;
 }
+
+/* ===== Réduction hauteur cartes accueil mobile ===== */
+@media (max-width: 600px) {
+
+  .home-card {
+    min-height: 160px;
+    /* ajuste si besoin (140 / 150 / 180) */
+    padding: 30px 20px;
+  }
+
+  .home-card h2 {
+    font-size: 22px;
+  }
+
+}
