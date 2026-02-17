@@ -1257,3 +1257,27 @@ button:active {
     font-size: 14px !important;
   }
 }
+
+/* =========================================
+   ✅ ACCUEIL MOBILE — style "touches ovales"
+   ========================================= */
+@media (max-width: 600px) {
+
+  .home-tabs .card {
+    border-radius: 999px !important;
+    /* forme ovale */
+    padding: 18px 24px !important;
+    /* hauteur adaptée */
+    margin: 10px auto !important;
+    min-height: unset !important;
+    height: auto !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .home-tabs .card h2 {
+    margin: 0 !important;
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+}
