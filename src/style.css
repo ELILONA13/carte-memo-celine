@@ -14,20 +14,60 @@ h1 {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center; /* On garde ton choix : lecture centrée */
+  text-align: center;
+  /* lecture centrée */
 }
 
-/* CARTES */
+/* FOND GENERAL (THEME) */
+html,
+body {
+  background: linear-gradient(180deg, #f6f2ff 0%, #ffffff 45%, #f3fbff 100%);
+}
+
+/* Titres plus “vivants” */
+h1,
+h2,
+h3 {
+  color: #2b1b5a;
+}
+
+/* Décor h3 (par défaut) */
+h3 {
+  position: relative;
+  padding-left: 10px;
+}
+
+h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 18px;
+  background: linear-gradient(180deg, #6d28d9 0%, #2563eb 100%);
+  border-radius: 6px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   CARTES
+   ========================================================= */
 .card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(109, 40, 217, 0.10);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(6px);
+
   padding: 2em;
   margin: 1.2em 0;
-  text-align: center; /* texte des leçons centré */
+  text-align: center;
+  /* texte des leçons centré */
+  overflow: visible;
 }
 
-/* MODE CLAIR */
+/* MODE CLAIR (si besoin) */
 @media (prefers-color-scheme: light) {
   .card {
     background: #ffffff;
@@ -41,13 +81,12 @@ h1 {
   text-align: center;
 }
 
+/* Style h3 (dans cartes) */
 .card h3 {
   margin-top: 1.6em;
   margin-bottom: 0.6em;
   font-size: 1.15rem;
   font-weight: 900;
-  padding-left: 10px;
-  border-left: 5px solid #4f46e5;
   display: inline-block;
 }
 
@@ -60,16 +99,112 @@ h1 {
   padding-left: 1.4em;
 }
 
-/* LIEN CLIQUABLE SUR TITRE */
+/* Liens */
+a {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #4f46e5;
+  text-decoration-thickness: 2px;
+}
+
+a:hover {
+  color: #2563eb;
+}
+
+/* LIEN CLIQUABLE SUR TITRE (accueil) */
 .card-link {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-/* ===============================
-   ACCUEIL – MODULES HORIZONTAUX
-   =============================== */
+/* Séparateur */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      rgba(109, 40, 217, 0.0),
+      rgba(109, 40, 217, 0.35),
+      rgba(37, 99, 235, 0.0));
+  margin: 16px auto;
+  max-width: 720px;
+}
+
+/* =========================================================
+   BOUTONS (généraux)
+   ========================================================= */
+button {
+  border-radius: 999px;
+  border: 1px solid rgba(109, 40, 217, 0.18);
+  padding: 0.65em 1.1em;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: inherit;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f3ff 100%);
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.10);
+  color: #2b1b5a;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(37, 99, 235, 0.14);
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(79, 70, 229, 0.10);
+}
+
+button:active {
+  transform: translateY(0px);
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.10);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.35);
+  outline-offset: 3px;
+}
+
+/* Centrage propre des boutons branches */
+.branch-button,
+.card-button,
+.module-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* =========================================================
+   HOME — barre Recherche (accueil)
+   ========================================================= */
+.home-search-top {
+  margin: 10px auto 18px;
+  text-align: center;
+}
+
+.home-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(109, 40, 217, 0.18);
+  background: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.08);
+}
+
+.home-search-btn:hover {
+  background: rgba(79, 70, 229, 0.08);
+  border-color: rgba(79, 70, 229, 0.55);
+}
+
+/* =========================================================
+   ACCUEIL – MODULES (HOME TABS)
+   ========================================================= */
 .home-tabs {
   display: flex;
   gap: 16px;
@@ -82,75 +217,104 @@ h1 {
   min-width: 260px;
 }
 
+/* ✅ MOBILE / TABLETTE : colonne */
 @media (max-width: 768px) {
   .home-tabs {
     flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  /* ✅ FIX IMPORTANT : en colonne, on annule le flex-grow
+     sinon ça “gonfle” la hauteur des cartes */
+  .home-tabs .card {
+    flex: none;
+    /* ⬅ LE FIX */
+    min-width: 0;
   }
 }
 
-/* ===============================
-   ACTIONS (BOUTONS) — VISIBLES
-   =============================== */
-button {
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  padding: 0.65em 1.1em;
-  font-size: 1rem;
-  font-weight: 800;
-  font-family: inherit;
-  background: rgba(255, 255, 255, 0.07);
-  cursor: pointer;
-  transition: transform 0.12s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-button:hover {
-  border-color: rgba(79, 70, 229, 0.9);
-  background: rgba(79, 70, 229, 0.14);
-  transform: translateY(-1px);
-}
-
-button:focus,
-button:focus-visible {
-  outline: 3px solid rgba(79, 70, 229, 0.55);
-  outline-offset: 3px;
-}
-
-@media (prefers-color-scheme: light) {
-  button {
-    border: 1px solid rgba(0, 0, 0, 0.16);
-    background: rgba(0, 0, 0, 0.03);
+/* ✅ ACCUEIL MOBILE : cartes “touches” (hauteur = contenu + largeur uniforme) */
+@media (max-width: 600px) {
+  .home-tabs {
+    align-items: center !important;
+    /* ✅ largeur uniforme centrée */
   }
-  button:hover {
-    border-color: rgba(79, 70, 229, 0.85);
-    background: rgba(79, 70, 229, 0.10);
+
+  /* la carte : pas de padding (c'est le lien qui donne la hauteur) */
+  .home-tabs .card {
+    padding: 0 !important;
+    margin: 10px 0 !important;
+
+    width: min(560px, 94vw) !important;
+    /* ✅ même largeur pour toutes */
+    margin-left: auto !important;
+    /* ✅ centré */
+    margin-right: auto !important;
+    /* ✅ centré */
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    border-radius: 28px !important;
   }
-  button:focus,
-  button:focus-visible {
-    outline: 3px solid rgba(79, 70, 229, 0.35);
+
+  /* le lien = “touche” */
+  .home-tabs .card .card-link {
+    display: flex !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* ✅ texte centré */
+    text-align: center !important;
+    padding: 12px 14px !important;
+    /* ⭐ règle hauteur */
+  }
+
+  /* h2 sans marges = pas de vide */
+  .home-tabs .card h2 {
+    margin: 0 !important;
+    line-height: 1.15 !important;
+    font-size: 20px !important;
+    text-align: center !important;
+    /* ✅ */
   }
 }
 
-/* LIENS "RETOUR" PLUS VISIBLES */
-a {
-  font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  /* la carte : pas de padding (c'est le lien qui donne la hauteur) */
+  .home-tabs .card {
+    padding: 0 !important;
+    margin: 10px 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    border-radius: 28px !important;
+  }
+
+  /* le lien = “touche” */
+  .home-tabs .card .card-link {
+    display: flex !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 12px 14px !important;
+    /* ⭐ règle hauteur */
+  }
+
+  /* h2 sans marges = pas de vide */
+  .home-tabs .card h2 {
+    margin: 0 !important;
+    line-height: 1.15 !important;
+    font-size: 20px !important;
+  }
 }
 
-/* ===== Centrage propre des boutons branches ===== */
-
-.branch-button,
-.card-button,
-.module-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-/* ===============================
+/* =========================================================
    BADGES / ÉTIQUETTES
-   =============================== */
+   ========================================================= */
 .badge {
   display: inline-block;
   padding: 0.18em 0.55em;
@@ -167,10 +331,12 @@ a {
   border-color: rgba(79, 70, 229, 0.65);
   background: rgba(79, 70, 229, 0.16);
 }
+
 .badge-key {
   border-color: rgba(16, 185, 129, 0.60);
   background: rgba(16, 185, 129, 0.16);
 }
+
 .badge-warn {
   border-color: rgba(245, 158, 11, 0.70);
   background: rgba(245, 158, 11, 0.18);
@@ -184,7 +350,7 @@ a {
 }
 
 /* =========================================================
-   BOÎTES PÉDAGOGIQUES (ultra visuel) — version UNIQUE
+   BOÎTES PÉDAGOGIQUES (optionnelles)
    ========================================================= */
 .box {
   margin: 18px auto;
@@ -201,31 +367,26 @@ a {
   margin-bottom: 10px;
 }
 
-/* FORMULE / MÉTHODE */
 .box-formula {
   background: #eef2ff;
   border-left: 8px solid #4f46e5;
 }
 
-/* EXEMPLE */
 .box-example {
   background: #ecfdf5;
   border-left: 8px solid #10b981;
 }
 
-/* RAPPEL / EXAMEN */
 .box-reminder {
   background: #fefce8;
   border-left: 8px solid #eab308;
 }
 
-/* ATTENTION */
 .box-warn {
   background: #fff7ed;
   border-left: 8px solid #f97316;
 }
 
-/* Texte */
 .box p,
 .box li {
   font-size: 1rem;
@@ -242,8 +403,29 @@ a {
 }
 
 /* =========================================================
-   VARIANTES VISUELLES SUR TES BLOCS .formula
+   BLOCS .formula + variantes
    ========================================================= */
+.formula {
+  margin: 18px auto;
+  padding: 16px 18px;
+  border-radius: 16px;
+  max-width: 900px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.formula-title {
+  font-weight: 900;
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+.formula-content {
+  margin: 0;
+  line-height: 1.55;
+}
+
 .formula.formula-example {
   border-color: #10b981;
   background-color: #ecfdf5;
@@ -265,7 +447,7 @@ a {
 }
 
 /* =========================================================
-   MENUS DE SOUS-MODULES — STYLE "VRP"
+   MENUS DE SOUS-MODULES (boutons “VRP”)
    ========================================================= */
 .card-menu {
   list-style: none;
@@ -289,8 +471,8 @@ a {
   justify-content: center;
   padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.18);
-  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   color: inherit;
   font-weight: 800;
@@ -303,29 +485,34 @@ a {
 
 .card-menu a:hover {
   transform: translateY(-1px);
-  border-color: rgba(79,70,229,0.55);
-  background: rgba(79,70,229,0.08);
+  border-color: rgba(79, 70, 229, 0.55);
+  background: rgba(79, 70, 229, 0.08);
 }
 
-.card-menu a:focus,
-.card-menu a:focus-visible {
-  outline: 3px solid rgba(79,70,229,0.35);
-  outline-offset: 3px;
-}
-
-/* MODE SOMBRE : rendu propre */
 @media (prefers-color-scheme: dark) {
   .card-menu a {
-    border: 1px solid rgba(255,255,255,0.22);
-    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
   }
+
   .card-menu a:hover {
-    border-color: rgba(79,70,229,0.85);
-    background: rgba(79,70,229,0.14);
+    border-color: rgba(79, 70, 229, 0.85);
+    background: rgba(79, 70, 229, 0.14);
   }
 }
 
-.hidden { display: none; }
+/* Menus uniformes (1 bouton par ligne) */
+.card-menu {
+  flex-direction: column;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.card-menu a {
+  width: min(560px, 100%);
+  min-width: 0;
+}
 
 /* =========================================================
    CHECKLIST BTP — hiérarchie + lisibilité
@@ -382,17 +569,15 @@ a {
   align-items: flex-start;
 }
 
-/* LISTE CENTRÉE — LIENS / RÉFÉRENCES (sans puces) */
+/* LISTE CENTRÉE — (sans puces) */
 .card ul.centered-list {
   list-style: none !important;
   padding-left: 0 !important;
   margin: 0.8em auto 1em;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-
   text-align: center;
 }
 
@@ -415,7 +600,6 @@ a {
   text-align: center;
 }
 
-/* ✅ Listes pédagogiques dédiées dans une leçon BTP */
 .btp-lesson ul.bullets,
 .btp-lesson ol.bullets {
   text-align: left;
@@ -425,14 +609,17 @@ a {
   list-style: disc;
 }
 
-/* Encadrés : on ne touche pas */
 .btp-lesson .formula {
   margin: 12px auto;
 }
-/* =========================================================
-   ✅ RÉCAP CHECKLIST — STYLE PRO (fiche synthèse)
-   ========================================================= */
 
+.hidden {
+  display: none;
+}
+
+/* =========================================================
+   RÉCAP CHECKLIST — STYLE PRO
+   ========================================================= */
 .recap-page {
   max-width: 1100px;
   margin: 0 auto;
@@ -454,157 +641,6 @@ a {
 .recap-subtitle {
   opacity: 0.8;
   margin: 0;
-}
-
-.recap-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin: 12px 0 4px;
-}
-
-.recap-actions a.btn,
-.recap-actions button.btn {
-  display: inline-block;
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
-  color: inherit;
-  font-weight: 650;
-}
-
-.recap-sheet {
-  max-width: 980px;
-  margin: 14px auto;
-  padding: 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.recap-h3 {
-  margin: 0 0 10px;
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-
-.recap-list {
-  margin: 0;
-  padding-left: 18px;
-  text-align: left;
-  max-width: 860px;
-  margin-inline: auto;
-}
-
-.recap-list li {
-  margin: 6px 0;
-}
-
-.recap-fieldset {
-  margin: 12px 0 0;
-  padding: 14px 12px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.recap-legend {
-  padding: 0 10px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  opacity: 0.9;
-}
-
-.recap-table-wrap {
-  overflow-x: auto;
-  margin-top: 10px;
-}
-
-.recap-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 720px;
-}
-
-.recap-table th,
-.recap-table td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-  padding: 10px 10px;
-  text-align: left;
-  vertical-align: top;
-}
-
-.recap-table th {
-  font-weight: 800;
-  opacity: 0.9;
-}
-
-.recap-pill {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
-  font-weight: 700;
-  font-size: 0.92rem;
-}
-
-.recap-muted {
-  opacity: 0.75;
-}
-
-/* Impression PDF propre */
-@media print {
-  body {
-    background: #fff !important;
-    color: #000 !important;
-  }
-
-  .recap-actions,
-  .nav-actions,
-  button,
-  a.btn {
-    display: none !important;
-  }
-
-  .recap-sheet {
-    border: 1px solid #ddd !important;
-    background: #fff !important;
-  }
-
-  .recap-fieldset {
-    border: 1px solid #ddd !important;
-  }
-
-  .recap-table th,
-  .recap-table td {
-    border-bottom: 1px solid #ddd !important;
-  }
-}
-
-/* ==============================
-   ✅ RÉCAP — FICHE PRO
-   ============================== */
-
-.recap-page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 14px 14px 40px;
-}
-
-.recap-header {
-  max-width: 980px;
-  margin: 0 auto 12px;
-  text-align: center;
-}
-
-.recap-header h2 {
-  margin: 10px 0 6px;
-  font-size: 1.55rem;
-  font-weight: 800;
 }
 
 .recap-actions {
@@ -719,32 +755,25 @@ a {
 /* =========================================================
    COULEURS BRANCHES URSSAF
    ========================================================= */
-
 .branch-maladie {
   color: #2563eb;
-  /* bleu */
   font-weight: 800;
 }
 
 .branch-vieillesse {
   color: #16a34a;
-  /* vert */
   font-weight: 800;
 }
 
 .branch-famille {
   color: #d97706;
-  /* orange */
   font-weight: 800;
 }
 
 .branch-atmp {
   color: #dc2626;
-  /* rouge */
   font-weight: 800;
 }
-
-/* Boutons colorés */
 
 .card-menu a.branch-maladie:hover {
   background: rgba(37, 99, 235, 0.12);
@@ -765,7 +794,6 @@ a {
 .urssaf-others {
   max-width: 980px;
   margin: 30px auto 0;
-  /* centre horizontalement */
   text-align: center;
 }
 
@@ -773,54 +801,35 @@ a {
   justify-content: center;
 }
 
-/* =========================================================
-   URSSAF — enlever la barre violette des h3 (sinon effet "décalé")
-   ========================================================= */
-
+/* URSSAF — enlever barre violette + décor h3 */
 .urssaf-branches h3,
 .urssaf-others h3 {
   border-left: none !important;
   padding-left: 0 !important;
   display: block !important;
-  /* prend toute la largeur */
+  text-align: center;
 }
 
-.vm-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 4px;
+.urssaf-branches h2::before,
+.urssaf-branches h3::before,
+.urssaf-others h2::before,
+.urssaf-others h3::before {
+  content: none !important;
 }
 
-.vm-table th,
-.vm-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.vm-table th {
-  font-weight: 800;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-}
-
-/* ================================
+/* =========================================================
    VERSEMENT MOBILITÉ — TABLEAU (resserré)
-   ================================ */
-
+   ========================================================= */
 .vm-table {
   width: min(720px, 85%);
-  /* ✅ resserré + limite max */
   margin: 10px auto 0;
-  /* ✅ centré */
   border-collapse: collapse;
   table-layout: fixed;
-  /* ✅ empêche l'étirement bizarre */
 }
 
 .vm-table th,
 .vm-table td {
   padding: 8px 10px;
-  /* ✅ un peu plus serré */
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -831,7 +840,6 @@ a {
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
 }
 
-/* ✅ colonnes équilibrées et rapprochées */
 .vm-table th:first-child,
 .vm-table td:first-child {
   width: 52%;
@@ -843,149 +851,9 @@ a {
 }
 
 /* =========================================================
-   🎨 THEME COULEURS (AJOUT) — sans modifier le texte/HTML
-   👉 Colle ce bloc TOUT EN BAS de style.css
+   TABLEAU COTISATIONS — full-bleed
    ========================================================= */
-
-/* Fond général moins blanc */
-html,
-body {
-  background: linear-gradient(180deg, #f6f2ff 0%, #ffffff 45%, #f3fbff 100%);
-}
-
-/* Zone app : un peu de profondeur */
-#app {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 18px 14px;
-}
-
-/* Titres plus “vivants” */
-h1,
-h2,
-h3 {
-  color: #2b1b5a;
-}
-
-h3 {
-  position: relative;
-  padding-left: 10px;
-}
-
-h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 18px;
-  background: linear-gradient(180deg, #6d28d9 0%, #2563eb 100%);
-  border-radius: 6px;
-  opacity: 0.9;
-}
-
-/* Cartes : fond léger + ombre douce */
-.card {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(109, 40, 217, 0.10);
-  border-radius: 18px;
-  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
-  backdrop-filter: blur(6px);
-}
-
-/* Petits blocs/sections “blanches” : ajouter une bordure colorée */
-hr {
-  border: 0;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(109, 40, 217, 0.0), rgba(109, 40, 217, 0.35), rgba(37, 99, 235, 0.0));
-  margin: 16px auto;
-  max-width: 720px;
-}
-
-/* Liens : plus visibles */
-a {
-  color: #4f46e5;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  color: #2563eb;
-}
-
-/* Boutons (tes “fiches” cliquables) : plus de couleur */
-button {
-  background: linear-gradient(180deg, #ffffff 0%, #f7f3ff 100%);
-  border: 1px solid rgba(109, 40, 217, 0.18);
-  border-radius: 999px;
-  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.10);
-  color: #2b1b5a;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 22px rgba(37, 99, 235, 0.14);
-  border-color: rgba(37, 99, 235, 0.35);
-}
-
-button:active {
-  transform: translateY(0px);
-  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.10);
-}
-
-/* ✅ TABLEAU COTISATIONS : on sort du conteneur #app (max-width:1100) */
-.landscape-page {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -49vw;
-  margin-right: -49vw;
-  width: 98vw;
-  max-width: 1700px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* Scroll si besoin */
-.landscape-page .recap-table-wrap {
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Tableau compact et lisible */
-.landscape-page .recap-table-compact {
-  table-layout: fixed;
-  width: 100%;
-  min-width: 1400px;
-  border-collapse: collapse;
-}
-
-.landscape-page .recap-table-compact th,
-.landscape-page .recap-table-compact td {
-  font-size: 0.82rem;
-  padding: 6px 8px;
-  line-height: 1.15;
-  vertical-align: top;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-/* Optionnel : texte un peu plus petit pour mieux tenir */
-.landscape-page .recap-table th,
-.landscape-page .recap-table td {
-  font-size: 0.92rem;
-}
-
-/* =========================================
-   ✅ TABLEAU "PAYSAGE PLEINE PAGE" SANS DÉMARCATION
-   (full-bleed propre, sans bande/coupure)
-   ========================================= */
-
-/* On neutralise l'effet "carte" uniquement pour ce bloc */
 .landscape-fullbleed {
-  /* Full width écran */
   width: 100vw;
   position: relative;
   left: 50%;
@@ -993,16 +861,13 @@ button:active {
   margin-left: -50vw;
   margin-right: -50vw;
 
-  /* On met EXACTEMENT le même fond que la page pour supprimer la démarcation */
   background: linear-gradient(180deg, #f6f2ff 0%, #ffffff 45%, #f3fbff 100%);
   padding: 18px 0 22px;
 
-  /* On évite tout effet de “trait” */
   box-shadow: none;
   border: none;
 }
 
-/* Le wrapper du tableau (au centre) */
 .landscape-fullbleed .recap-table-wrap {
   max-width: 1600px;
   margin: 0 auto;
@@ -1011,14 +876,12 @@ button:active {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Tableau large (lisible) */
 .landscape-fullbleed .recap-table {
   min-width: 1400px;
   width: 100%;
   border-collapse: collapse;
 }
 
-/* Un peu plus compact si besoin */
 .landscape-fullbleed .recap-table th,
 .landscape-fullbleed .recap-table td {
   font-size: 0.92rem;
@@ -1026,38 +889,27 @@ button:active {
   vertical-align: top;
 }
 
-/* Important : la carte ne doit pas "couper" le full-bleed */
-.card {
-  overflow: visible;
-}
-
-/* =========================================
-   ✅ TABLEAU COTISATIONS : mettre la colonne "Cotisations" en rouge
-   (5e colonne du tableau)
-   ========================================= */
-
+/* Colonne “Cotisations” en rouge (5e colonne) */
 .cotisations-red td:nth-child(5) {
   color: #dc2626;
-  /* rouge lisible */
   font-weight: 800;
 }
 
-/* Option : garder le rouge même si du <b> est dedans */
 .cotisations-red td:nth-child(5) b {
   color: inherit;
 }
 
-/* Option : pas rouge sur l'entête (si tu veux garder ton jaune) */
 .cotisations-red th:nth-child(5) {
   color: #000;
 }
 
-/* ✅ Tableaux carte Effectif uniquement */
+/* =========================================================
+   TABLEAUX — carte Effectif
+   ========================================================= */
 .effectif-table-wrap {
   width: 100%;
   display: flex;
   justify-content: center;
-  /* centre le tableau dans la page */
   margin: 10px 0;
 }
 
@@ -1066,16 +918,13 @@ button:active {
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0 6px;
-  /* ⭐ espace entre les lignes (lisible) */
 }
 
-/* padding léger = lisible sans “gros cadre” */
 .effectif-table th,
 .effectif-table td {
   padding: 2px 10px;
 }
 
-/* Alignements */
 .effectif-table .col-left {
   text-align: left;
 }
@@ -1088,7 +937,6 @@ button:active {
   text-align: right;
 }
 
-/* Largeurs fixes */
 .effectif-table.effectif-2col .col-left {
   width: 70%;
 }
@@ -1097,66 +945,33 @@ button:active {
   width: 30%;
 }
 
-/* Retrait lignes */
 .effectif-table .indent {
   padding-left: 18px;
 }
 
-/* Fix : en-tête gauche parfaitement aligné */
 .effectif-table thead th.col-left {
   padding-left: 10px;
   text-align: left;
 }
 
-/* ===== Mobile optimisation cartes accueil ===== */
-@media (max-width: 768px) {
-
-  .home-card {
-    padding: 20px 16px;
-    min-height: auto;
-  }
-
-  .home-card h2 {
-    font-size: 22px;
-  }
-
-  .home-card p {
-    font-size: 14px;
-  }
-
-  .home-tabs {
-    gap: 12px;
-  }
-
-}
-
-/* ===== Liens longs : rendu propre sur mobile ===== */
+/* =========================================================
+   MOBILE — liens longs propres + encadrés + boutons
+   ========================================================= */
 @media (max-width: 600px) {
-
-  /* Liens : autoriser la coupure propre des URL */
   a {
     overflow-wrap: anywhere;
-    /* coupe où il faut si URL longue */
     word-break: break-word;
-    /* fallback */
   }
 
-  /* Si tu as des encadrés type .formula */
   .formula a {
     font-size: 0.95em;
-    /* un poil plus petit dans les encadrés */
     line-height: 1.25;
     text-decoration-thickness: 2px;
   }
 
-  /* Optionnel : un peu moins de gros espaces dans les encadrés */
   .formula {
     padding: 14px 12px;
   }
-}
-
-/* ===== Boutons centrés en mobile ===== */
-@media (max-width: 600px) {
 
   .card-button,
   .branch-button,
@@ -1168,114 +983,4 @@ button:active {
     margin: 10px auto;
     box-sizing: border-box;
   }
-
-}
-
-/* ===== Menus : boutons uniformes et bien centrés (tous modules) ===== */
-.card-menu {
-  flex-direction: column;
-  /* 1 bouton par ligne */
-  align-items: center;
-  max-width: 720px;
-}
-
-.card-menu a {
-  width: min(560px, 100%);
-  /* même largeur sur PC, s’adapte sur mobile */
-  min-width: 0;
-  /* annule le min-width:240px précédent */
-}
-
-/* ===== Menus : alignement parfait desktop ===== */
-.card-menu {
-  flex-direction: column;
-  align-items: center;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.card-menu a {
-  width: min(560px, 100%);
-  min-width: 0;
-}
-
-/* ===== URSSAF : titres parfaitement centrés ===== */
-.urssaf-branches h3 {
-  padding-left: 0 !important;
-  border-left: none !important;
-  display: block !important;
-  text-align: center;
-}
-
-/* ===== URSSAF : enlever le trait décoratif des titres ===== */
-.urssaf-branches h2::before,
-.urssaf-branches h3::before,
-.urssaf-others h2::before,
-.urssaf-others h3::before {
-  content: none !important;
-}
-
-/* ===== Réduction hauteur cartes accueil mobile ===== */
-@media (max-width: 600px) {
-
-  .home-card {
-    min-height: 160px;
-    /* ajuste si besoin (140 / 150 / 180) */
-    padding: 30px 20px;
-  }
-
-  .home-card h2 {
-    font-size: 22px;
-  }
-
-}
-
-/* ✅ ACCUEIL MOBILE — réduire la hauteur des cartes (les vraies cartes = .home-tabs .card) */
-@media (max-width: 600px) {
-
-  /* Les grosses cartes d’accueil */
-  .home-tabs .card {
-    min-height: 0 !important;
-    /* annule les min-height éventuels */
-    height: auto !important;
-    padding: 22px 16px !important;
-    /* moins de vide */
-    margin: 12px 0 !important;
-    /* moins d’espace entre cartes */
-  }
-
-  /* Le titre dans la carte d’accueil */
-  .home-tabs .card h2 {
-    margin: 0 !important;
-    font-size: 24px !important;
-    line-height: 1.15 !important;
-  }
-
-  /* Si tu as une description sous le titre */
-  .home-tabs .card p {
-    margin-top: 8px !important;
-    font-size: 14px !important;
-  }
-}
-
-/* =========================================
-   ✅ ACCUEIL MOBILE — hauteur adaptative
-   ========================================= */
-@media (max-width: 600px) {
-
-  .home-tabs .card {
-    min-height: 0 !important;
-    /* supprime hauteur forcée */
-    height: auto !important;
-    /* s’adapte au contenu */
-    padding: 22px 16px !important;
-    margin: 12px 0 !important;
-  }
-
-  .home-tabs .card h2 {
-    margin: 0 !important;
-    font-size: 22px !important;
-    line-height: 1.15 !important;
-  }
-
 }
